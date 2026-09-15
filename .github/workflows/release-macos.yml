@@ -188,7 +188,7 @@ jobs:
           SHA256: ${{ steps.release.outputs.sha256 }}
         run: |
           ruby -e '
-            path = "Casks/toolbox-desktop.rb"
+            path = "Casks/toolbox-macos.rb"
             cask = File.read(path)
 
             version_changed = cask.sub!(
@@ -208,12 +208,12 @@ jobs:
           '
 
           echo "Updated cask:"
-          cat Casks/toolbox-desktop.rb
+          cat Casks/toolbox-macos.rb
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add Casks/toolbox-desktop.rb
+          git add Casks/toolbox-macos.rb
           git diff --cached --check
 
           if git diff --cached --quiet; then
